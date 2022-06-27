@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import useInput from '../../Hooks/useInput'
 import {  Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleAction } from '../../Store/Toggle'
 
 const SignUp = (props) => {
     const [isAdmin, setIsAdmin]=useState(false)
     const [adminValue1,setAdmin]=useState(false)
+    const useToggle=useSelector(state=>state.toggle.toggle)
+    console.log(useToggle);
+    const dispatch=useDispatch()
+    const togleHandler=()=>{
+      dispatch(toggleAction.toggleAdmin())
+    }
+
    const toggleChangeHandler=(event)=>{
     setAdmin(true)
     props.admin(isAdmin)
     console.log(isAdmin);
    }
+
+
     let dataArray=[]
     useEffect(()=>{
         const getValues=async()=>{
@@ -42,7 +53,6 @@ const SignUp = (props) => {
         inputBlurHandler: firstNameBlurHandler,
        
     } = useInput((value) => value.trim() !== '')
-
     const {
         value: lastNameValue,
         isValid: eneteredLastNameIsValid,
@@ -113,7 +123,7 @@ const SignUp = (props) => {
                 catch (error) {
                     console.log(error);
                 }
-                 
+   
             }
              setAlreadyExist(true)
         }
@@ -121,7 +131,6 @@ const SignUp = (props) => {
     }
     return (
         <>
-        
         <form onSubmit={formSubmitter} className='form-background' >
             <h1>Login</h1>
             <div className={firstNameHasError ? 'form-control invalid' : 'form-control'}>
@@ -172,10 +181,10 @@ const SignUp = (props) => {
 
             <p>Already a user? <Link to='/login' >Login in here</Link>  </p>
         </form>
-        {dataArray.map(items=><div>
-            {items.emailValue}
-            1111
-        </div>)}
+
+        {useToggle&& <span>toggle test</span>}
+        <button onClick={togleHandler}>submit</button>
+       
         </>
 
     )

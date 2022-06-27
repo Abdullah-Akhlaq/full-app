@@ -1,0 +1,21 @@
+.card{
+    background: rgb(218, 237, 190);
+    width: 250px;
+    height: 200px;
+    margin: 20px;
+    padding: 10px;
+}
+.card1{
+padding-left: 200px;
+left: 150px;
+}
+.card2{
+padding: 10px;
+}
+.card3{
+    padding: 10px;
+}
+.card-body{
+    position: center;
+    padding-left: 200px;
+}
