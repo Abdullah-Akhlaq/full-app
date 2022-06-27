@@ -46,7 +46,7 @@ const SignIn = () => {
         setUserFound(false)
         if(data[key].isAdmin === false){
           localStorage.setItem('users',data[key].emailValue )
-          navigate('/userDashboard')
+          navigate('/Dashboard')
         }
         else{
           navigate('/adminDashboard')  

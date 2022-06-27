@@ -1,18 +1,11 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import tooggleSlice from "./Toggle";
+import userDataSlice from "./userDataSlice";
 
-
-const toggleSlice=createSlice({
-    name:'toggle',
-    initialState:{toggleValue:false},
+const store=configureStore({ 
     reducer:{
-        toggleSlice(state){
-            state.toggleValue=true
-        }
-    }
-})
-const store=configureStore(
-   { reducer:{
-     toggle:toggleSlice.reducer
+     toggle:tooggleSlice.reducer,
+     userData:userDataSlice.reducer
     }}
 )
 export default store
